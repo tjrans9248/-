@@ -1,11 +1,7 @@
 import React from 'react';
 
 function PayPage() {
-    return (
-        <div>
-            
-        </div>
-    );
+  return <div>Payment</div>;
 }
 
 export default PayPage;

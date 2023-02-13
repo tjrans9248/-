@@ -4,14 +4,16 @@ import ProductList from './ProductList';
 import './Product.scss';
 import ProductSort from './ProductSort';
 import { useDispatch } from 'react-redux';
+import ProductPagination from './ProductPagination';
 
 const TAB_LIST = ['all', '초콜릿', '캔디', '쿠키', '젤리', '케이크'];
 
 function Product() {
   const dispatch = useDispatch();
   const [currTab, setCurrTab] = useState('all');
-  const [searchParams, setSearchParams] = useSearchParams();
   const [productLists, setProductLists] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const offset = searchParams.get('offset');
   const limit = searchParams.get('limit');
   // const limit = 12;
@@ -76,6 +78,10 @@ function Product() {
           })}
         </div>
       </div>
+      <ProductPagination
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+      />
     </section>
   );
 }

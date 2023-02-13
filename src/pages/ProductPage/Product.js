@@ -1,43 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProductList from './ProductList';
-import Dropdown from './ProductDropdown';
 import './Product.scss';
+import ProductSort from './ProductSort';
+import { useDispatch } from 'react-redux';
 
 const TAB_LIST = ['all', '초콜릿', '캔디', '쿠키', '젤리', '케이크'];
 
 function Product() {
+  const dispatch = useDispatch();
   const [currTab, setCurrTab] = useState('all');
-  const [productLists, setProductLists] = useState([]);
-  const [dropdownMenu, setDropDownMenu] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [productLists, setProductLists] = useState([]);
   const offset = searchParams.get('offset');
   const limit = searchParams.get('limit');
   // const limit = 12;
   // const offset = 0;
-
-  const movePage = pageNum => {
-    searchParams.set('offset', (pageNum - 1) * 5);
-    setSearchParams(searchParams);
-  };
-
-  const filterItemIncrease = event => {
-    const priceSorting = [...productLists];
-    const priceCompare = key => (a, b) => {
-      return a[key] - b[key];
-    };
-    priceSorting.sort(priceCompare('price'));
-    setProductLists(priceSorting);
-  };
-
-  const filterItemDecrease = event => {
-    const priceSorting = [...productLists];
-    const priceCompare = key => (a, b) => {
-      return b[key] - a[key];
-    };
-    priceSorting.sort(priceCompare('price'));
-    setProductLists(priceSorting);
-  };
 
   const accessToken = localStorage.getItem('accessToken');
 
@@ -53,12 +31,11 @@ function Product() {
       //   }
       // )
       .then(response => response.json())
-      .then(result => setProductLists(result));
+      .then(result => dispatch(setProductLists(result)));
   }, [currTab, offset, limit]);
 
   return (
     <section className="product">
-      <div className="product-nav">nav</div>
       <div className="product-pic">
         <img src="/images/cusCakes.jpg" alt="상품" />
         <div className="product-image-letter">
@@ -85,38 +62,8 @@ function Product() {
             </ul>
           </div>
         </div>
-        <div className="product-tog-cont">
-          <div className="product-toggle">
-            <button
-              className="product-btn"
-              onClick={() => {
-                setDropDownMenu(!dropdownMenu);
-              }}
-            >
-              필터링
-            </button>
-            <div>
-              <Dropdown visibility={dropdownMenu}>
-                <ul className="product-dropdown">
-                  <button
-                    className="product-dropdown-btn"
-                    onClick={filterItemIncrease}
-                  >
-                    <li>낮은가격순</li>
-                  </button>
-
-                  <button
-                    className="product-dropdown-btn"
-                    onClick={filterItemDecrease}
-                  >
-                    <li>높은가격순</li>
-                  </button>
-                </ul>
-              </Dropdown>
-            </div>
-          </div>
-        </div>
       </div>
+      <ProductSort />
 
       <div className="detail-product-wrap">
         <div className="detail-product-middle-box">
@@ -128,13 +75,6 @@ function Product() {
             );
           })}
         </div>
-      </div>
-
-      <div className="product-footer-button">
-        <button onClick={() => movePage(1)}>1</button>
-        <button onClick={() => movePage(2)}>2</button>
-        <button onClick={() => movePage(3)}>3</button>
-        <button onClick={() => movePage(4)}>4</button>
       </div>
     </section>
   );

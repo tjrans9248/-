@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import ProductList from './ProductList';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProductData } from '../store/sortSlice';
+import ProductSort from './components/ProductSort';
+import ProductPagination from './components/ProductPagination';
+import ProductMenuTab from './components/ProductMenuTab';
+import ProductHead from './components/ProductHead';
+import ProductItem from './components/ProductList';
+import ProductList from './components/ProductItems';
 import './Product.scss';
-import ProductSort from './ProductSort';
-import { useDispatch } from 'react-redux';
-import ProductPagination from './ProductPagination';
-
-const TAB_LIST = ['all', '초콜릿', '캔디', '쿠키', '젤리', '케이크'];
 
 function Product() {
-  const dispatch = useDispatch();
   const [currTab, setCurrTab] = useState('all');
-  const [productLists, setProductLists] = useState([]);
+  // const [productLists, setProductLists] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const dispatch = useDispatch();
+  const productData = useSelector(state => state.productData.value);
   const offset = searchParams.get('offset');
   const limit = searchParams.get('limit');
-  // const limit = 12;
-  // const offset = 0;
 
-  const accessToken = localStorage.getItem('accessToken');
+  // const accessToken = localStorage.getItem('accessToken');
 
   useEffect(() => {
-    // fetch(`https://jsonplaceholder.typicode.com/posts?_start=${0}&_limit=${12}`)
     fetch(`data/${currTab}.json`)
       // fetch(
       //   `http://172.20.10.4:3001/products/?category=${currTab}&offset=${0}&limit=${12}`,
@@ -33,51 +33,28 @@ function Product() {
       //   }
       // )
       .then(response => response.json())
-      .then(result => dispatch(setProductLists(result)));
+      .then(result => dispatch(getProductData(result)));
   }, [currTab, offset, limit]);
 
   return (
     <section className="product">
-      <div className="product-pic">
-        <img src="/images/cusCakes.jpg" alt="상품" />
-        <div className="product-image-letter">
-          <h2>HUSH</h2>
-          <h3>ENJOY YOUR DESSERT!</h3>
-        </div>
-      </div>
-
-      <div className="product-menu-tab-wrap">
-        <div className="products-tabs-cont">
-          <div className="products-tabs">
-            <ul className="tabs">
-              {TAB_LIST.map(tab => (
-                <li
-                  key={tab}
-                  className={`product-tab-name ${
-                    currTab === tab ? 'selected' : ''
-                  }`}
-                  onClick={() => setCurrTab(tab)}
-                >
-                  {tab}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
+      <ProductHead />
+      <ProductMenuTab setCurrTab={setCurrTab} currTab={currTab} />
       <ProductSort />
+      {/* <ProductItem productLists={productLists} productData={productData} /> */}
 
       <div className="detail-product-wrap">
         <div className="detail-product-middle-box">
-          {productLists.map((product, all) => {
+          {productData.map(product => {
             return (
-              <div className="detail-product-outer-cont" key={all}>
+              <div className="detail-product-outer-cont" key={product.id}>
                 <ProductList product={product} />
               </div>
             );
           })}
         </div>
       </div>
+
       <ProductPagination
         searchParams={searchParams}
         setSearchParams={setSearchParams}

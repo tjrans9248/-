@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { showProductList } from '../store/slice';
+import { getProductData } from '../../store/sortSlice';
 import Dropdown from './ProductDropdown';
+import '../ProductList.scss';
 
 const ProductSort = () => {
   const dispatch = useDispatch();
-  const productLists = useSelector(state => state.productList.value);
+  const productData = useSelector(state => state.productData.value);
+  // console.log(productList);
+  // const productList = useSelector(state => state.productList.value);
   const [dropdownMenu, setDropDownMenu] = useState(false);
 
   //productList, setProductList 리덕스
-  const productSortAsc = event => {
-    const priceSorting = [...productLists];
-    const priceCompare = key => (a, b) => {
-      return a[key] - b[key];
-    };
-    priceSorting.sort(priceCompare('price'));
-    dispatch(showProductList(priceSorting));
+  const productSortAsc = () => {
+    const priceSorting = [...productData];
+    // const priceCompare = key => (a, b) => {
+    //   return a[key] - b[key];
+    // };
+    priceSorting.sort((a, b) => a.price - b.price);
+    dispatch(getProductData(priceSorting));
   };
 
-  const productSortDesc = event => {
-    const priceSorting = [...productLists];
+  const productSortDesc = () => {
+    const priceSorting = [...productData];
     const priceCompare = key => (a, b) => {
       return b[key] - a[key];
     };
     priceSorting.sort(priceCompare('price'));
-    dispatch(showProductList(priceSorting));
+    dispatch(getProductData(priceSorting));
   };
 
   return (

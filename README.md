@@ -1,28 +1,27 @@
-# 4팀- 러쉬코리아 (Beauty Trend Style) (1)
+<div align="center">
+  🍫 HUSH (현재 리펙토링 진행중 입니다.. 조금만 기다려 주세요) 🍫
 
-## 팀원
+Hush 는 달콤한 디저트를 전문적으로 판매하는 웹사이트 입니다.
 
-### Front-end
+초기 로그인시 포인트가 제공되니 원하시는걸 구매해보세요~!!
 
-- 강루비, 김대호, 양석문, 주혜린
+🛠️ TECH 🛠️
 
-### Back-end
+  <img src="https://img.shields.io/badge/React-09D3AC?style=flat&logo=React&logoColor=white"/>
+   <img src="https://img.shields.io/badge/Typescript-3178C6?style=flat&logo=Typescript&logoColor=white"/>
+   <img src="https://img.shields.io/badge/Sass-CC6699?style=flat&logo=sass&logoColor=white"/>
+   <img src="https://img.shields.io/badge/Redux-764ABC?style=flat&logo=Redux&logoColor=white"/>
 
-- 김정훈, 정다영, 정승렬
+</div>
 
-## 사용한 기술
+---
 
-### Front-end
+## 기술 스택
 
-- React, Sass
+### React.js
 
-### Back-end
-
-- Node.js, MySQL, Express
-
-### co-work
-
-- git, slack, trello, notion
+<img src="">
+-
 
 ## 시연 사진
 

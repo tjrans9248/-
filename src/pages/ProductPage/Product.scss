@@ -65,24 +65,26 @@
       }
     }
 
-    .product-tog-cont {
-      width: 1200px;
-      margin: 0 auto;
+    .product-toggle-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      // .product-toggle {
+      //   display: flex;
+      //   flex-direction: column;
+      //   align-items: flex-end;
+      //   position: relative;
+      //   margin: 30px 0;
 
-      .product-toggle {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        position: relative;
-        margin: 30px 0;
-
-        .product-btn {
-          width: 200px;
-          height: 50px;
-          background-color: white;
-          border: 1px solid #000;
-        }
+      .product-btn {
+        width: 200px;
+        height: 50px;
+        background-color: white;
+        border: 1px solid #000;
+        margin-left: 500px;
       }
+      // }
     }
   }
 

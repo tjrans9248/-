@@ -6,7 +6,7 @@ const ProductList = ({ product }) => {
   const { id, stock, name, thumbnail_image_url, price, category_name } =
     product;
 
-  // if (Object.keys(product).length === 0) return <>Loading...</>;
+  if (Object.keys(product).length === 0) return <>Loading...</>;
 
   return (
     <div

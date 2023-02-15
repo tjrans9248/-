@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductSort from './ProductSort';
 
 const TAB_LIST = ['all', '초콜릿', '캔디', '쿠키', '젤리', '케이크'];
 
@@ -23,6 +24,7 @@ const ProductMenuTab = ({ setCurrTab, currTab }) => {
             </ul>
           </div>
         </div>
+        <ProductSort />
       </div>
     </div>
   );

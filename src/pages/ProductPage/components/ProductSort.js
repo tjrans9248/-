@@ -68,7 +68,7 @@ const ProductSortContainer = styled.div`
 
   .product-sort-btn {
     position: absolute;
-    bottom: 7px;
+    bottom: -17px;
     right: 10px;
     z-index: 1;
     width: 200px;

@@ -80,18 +80,26 @@
         strong {
           width: 180px;
           font-size: 18px;
-          margin-bottom: 5px;
+          // margin-bottom: 5px;
+          padding: 5px 5px;
         }
 
         p {
           margin-bottom: 15px;
+          padding: 5px 5px;
           width: 180px;
           font-size: 18px;
         }
 
-        span {
-          margin-bottom: 3px;
+        .footer-phone {
+          display: flex;
+          justify-content: center;
           width: 300px;
+
+          span {
+            margin-bottom: 3px;
+            width: 300px;
+          }
         }
       }
 
@@ -141,7 +149,7 @@
         align-items: flex-start;
         flex-wrap: wrap;
 
-        strong {
+        p {
           width: 180px;
           font-size: 20px;
           color: white;

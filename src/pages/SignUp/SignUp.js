@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Join.scss';
+import './SignUp.scss';
 
 function Join() {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ function Join() {
   });
   const [isCheckEmail, setIsCheckEmail] = useState(false);
 
-  const inputChange = e => {
+  const handleChange = e => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
@@ -21,7 +21,7 @@ function Join() {
 
   const isPwValid = PW_VALIDATION.test(password);
 
-  const checkDuplicate = e => {
+  const checkIdDuplicate = e => {
     e.preventDefault();
 
     fetch('http://192.168.228.223:3001/user/check', {
@@ -45,7 +45,7 @@ function Join() {
       });
   };
 
-  const submitForm = e => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     if (!isCheckEmail) {
@@ -92,13 +92,13 @@ function Join() {
             하는 항목입니다.
           </p>
         </div>
-        <form onChange={inputChange} onSubmit={submitForm}>
+        <form onChange={handleChange} onSubmit={handleSubmit}>
           <div className="join-form">
             <label className="form-label">
               <span className="caution-symbol">*</span>이메일
             </label>
             <input className="form-input-email input-focus" name="email" />
-            <button className="duplicate-btn" onClick={checkDuplicate}>
+            <button className="duplicate-btn" onClick={checkIdDuplicate}>
               중복확인
             </button>
           </div>

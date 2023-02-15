@@ -114,10 +114,10 @@ function Nav() {
               <div className="my-page-modal">
                 <ul>
                   <li>
-                    <Link to="/join">회원가입</Link>
+                    <Link to="/signup">회원가입</Link>
                   </li>
                   <li>
-                    <Link to="/login">로그인</Link>
+                    <Link to="/signin">로그인</Link>
                   </li>
                   <li>
                     <Link to="/detail">찜!</Link>

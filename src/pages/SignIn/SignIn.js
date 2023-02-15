@@ -72,7 +72,7 @@ function Login() {
       </form>
       <div className="login-link-cont">
         회원이 아니신가요?
-        <span className="login-link-join" onClick={() => navigate('/join')}>
+        <span className="login-link-join" onClick={() => navigate('/SignUp')}>
           &nbsp; 회원가입
         </span>
       </div>

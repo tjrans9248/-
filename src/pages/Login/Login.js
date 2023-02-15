@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.scss';
+import styled from 'styled-components';
+
+const ERROR_MSG = {
+  WRONG_EMAIL: '이메일을 다시 작성해주세요.',
+  WRONG_PASSWORD: '비밀번호를 다시 작성해주세요.',
+};
 
 function Login() {
   const navigate = useNavigate();
@@ -9,13 +14,13 @@ function Login() {
     password: '',
   });
 
-  const inputChange = e => {
+  const handleChange = e => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
   const { email, password } = inputValue;
 
-  const submitForm = e => {
+  const handleSubmit = e => {
     e.preventDefault();
     fetch('http://10.58.2.130:3001/users/signin', {
       method: 'POST',
@@ -46,9 +51,13 @@ function Login() {
   };
 
   return (
-    <div className="login">
+    <LoginContainer>
       <h1 className="login-title">로그인</h1>
-      <form className="login-form" onChange={inputChange} onSubmit={submitForm}>
+      <form
+        className="login-form"
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+      >
         <input className="login-input" name="email" placeholder="이메일" />
         <input className="login-input" name="password" placeholder="비밀번호" />
         <input
@@ -61,16 +70,113 @@ function Login() {
         </label>
         <button className="login-btn">로그인</button>
       </form>
-      <p className="login-link-join" onClick={() => navigate('/join')}>
-        회원가입
-      </p>
-    </div>
+      <div className="login-link-cont">
+        회원이 아니신가요?
+        <span className="login-link-join" onClick={() => navigate('/join')}>
+          &nbsp; 회원가입
+        </span>
+      </div>
+    </LoginContainer>
   );
 }
 
 export default Login;
 
-const ERROR_MSG = {
-  WRONG_EMAIL: '이메일을 다시 작성해주세요.',
-  WRONG_PASSWORD: '비밀번호를 다시 작성해주세요.',
-};
+const LoginContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .login-title {
+    margin: 130px 0 50px;
+    font-size: 32px;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login-input {
+    margin: 7px 0;
+    padding: 15px;
+    width: 310px;
+    font-size: 15px;
+  }
+
+  .login-input:focus {
+    outline: none;
+  }
+
+  input[id='saveEmail'] {
+    display: none;
+  }
+
+  input[id='saveEmail'] + label {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #bcbcbc;
+    border-radius: 3px;
+  }
+
+  input[id='saveEmail'] + label {
+    cursor: pointer;
+  }
+
+  .login-checkbox-label {
+    position: relative;
+    top: 6px;
+    left: -144px;
+
+    span {
+      position: absolute;
+      width: 80px;
+      top: 0;
+      left: 30px;
+    }
+  }
+
+  .login-btn {
+    margin: 30px 0 0 0;
+    padding: 20px 0;
+    width: 310px;
+    border: 1px solid #b6b6b6;
+    background-color: #222;
+    font-size: 16px;
+    color: white;
+    box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #222;
+      background-color: rgb(252, 252, 252);
+      font-weight: bold;
+      color: #222;
+    }
+  }
+
+  .login-link-cont {
+    display: inline-block;
+    padding-top: 50px;
+    font-size: 18px;
+    .login-link-join {
+      margin: 50px 0;
+      padding: 3px 0;
+      width: 62px;
+      font-size: 15px;
+      font-weight: bold;
+      font-size: 18px;
+
+      cursor: pointer;
+
+      &:hover {
+        border-bottom: 1px solid #1ca14c;
+        color: #1ca14c;
+      }
+    }
+  }
+`;

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ProductItem from './ProductItems';
 
 const ProductList = ({ productLists, productData }) => {
-  console.log(productData);
   return (
     <div>
       <div className="detail-product-wrap">

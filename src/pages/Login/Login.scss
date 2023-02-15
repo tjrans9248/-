@@ -75,18 +75,20 @@
     }
   }
 
-  .login-link-join {
-    margin: 50px 0;
-    padding: 3px 0;
-    width: 62px;
-    border-bottom: 1px solid #222;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
+  .login-link-cont {
+    .login-link-join {
+      margin: 50px 0;
+      padding: 3px 0;
+      width: 62px;
+      border-bottom: 1px solid #222;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
 
-    &:hover {
-      border-bottom: 1px solid #1ca14c;
-      color: #1ca14c;
+      &:hover {
+        border-bottom: 1px solid #1ca14c;
+        color: #1ca14c;
+      }
     }
   }
 }

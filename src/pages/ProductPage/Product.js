@@ -6,17 +6,15 @@ import ProductSort from './components/ProductSort';
 import ProductPagination from './components/ProductPagination';
 import ProductMenuTab from './components/ProductMenuTab';
 import ProductHead from './components/ProductHead';
-import ProductItem from './components/ProductList';
 import ProductList from './components/ProductItems';
 import './Product.scss';
 
 function Product() {
   const [currTab, setCurrTab] = useState('all');
-  // const [productLists, setProductLists] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-
-  const dispatch = useDispatch();
   const productData = useSelector(state => state.productData.value);
+  const dispatch = useDispatch();
+
   const offset = searchParams.get('offset');
   const limit = searchParams.get('limit');
 
@@ -41,7 +39,6 @@ function Product() {
       <ProductHead />
       <ProductMenuTab setCurrTab={setCurrTab} currTab={currTab} />
       <ProductSort />
-      {/* <ProductItem productLists={productLists} productData={productData} /> */}
 
       <div className="detail-product-wrap">
         <div className="detail-product-middle-box">

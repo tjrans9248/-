@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductData } from '../../store/sortSlice';
 import Dropdown from './ProductDropdown';
-// import '../ProductList.scss';
 import styled from 'styled-components';
 
 const ProductSort = () => {

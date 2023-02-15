@@ -7,7 +7,7 @@ const ProductHead = () => {
         <img src="/images/cusCakes.jpg" alt="상품" />
         <div className="product-image-letter">
           <h2>HUSH</h2>
-          <h3>ENJOY YOUR DESSERT!!!!</h3>
+          <h3>ENJOY YOUR DESSERT!</h3>
         </div>
       </div>
     </div>

@@ -5,23 +5,35 @@ Hush 는 달콤한 디저트를 전문적으로 판매하는 웹사이트 입니
 
 초기 로그인시 포인트가 제공되니 원하시는걸 구매해보세요~!!
 
-🛠️ TECH 🛠️
+### 🛠️ TECH 🛠️
 
   <img src="https://img.shields.io/badge/React-09D3AC?style=flat&logo=React&logoColor=white"/>
    <img src="https://img.shields.io/badge/Typescript-3178C6?style=flat&logo=Typescript&logoColor=white"/>
    <img src="https://img.shields.io/badge/Sass-CC6699?style=flat&logo=sass&logoColor=white"/>
    <img src="https://img.shields.io/badge/Redux-764ABC?style=flat&logo=Redux&logoColor=white"/>
+   <img src="https://img.shields.io/badge/styled-components-DB7093?style=flat&logo=styled-components&logoColor=white"/>
 
 </div>
 
 ---
 
+# React.js
+
+<img src="https://augnitive.com/wp-content/uploads/2019/10/reactbanner.png" style='height: 100px'>
+
+- 왜 리액트는 사용했냐?
+
+1. 리액트는 컴포넌트 기반의 아키텍쳐이다 보니, 한번 잘 만들어놓으면, 다른 곳에서도 쉽게 사용이 가능합니다. 그래서 효울적이고, 생산성도 높고, 유지조수에도 적합해 선택하게 되었습니다.
+
+2. 위대한 기업에 대한 신뢰가 있어서 입니다. 에러에 맞닦드리거나, 해결방법이 어려울경우, 공식문서를 참고를 많이 할 수 있고, 웬만한것은 공식문서에서 해결할 수 있기 때문입니다.
+
+3. React 는 html과 유사한 문법인 jsx 문법을 사용합니다. html을 작성하듯 코드를 작성할 수 있기 때문에, 가독성에도 좋을것이라 판단했기 때문입니다.
+
 ## 기술 스택
 
 ### React.js
 
-<img src="">
--
+## <img src="">
 
 ## 시연 사진
 

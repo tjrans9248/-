@@ -1,5 +1,4 @@
 import React from 'react';
-
 import FooterSupport from './components/FooterSupport';
 import FooterLeft from './components/FooterLeft';
 import FooterRight from './components/FooterRight';

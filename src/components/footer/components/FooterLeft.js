@@ -1,5 +1,5 @@
 import React from 'react';
-import FOOTER_DATA from './FooterData';
+import FOOTER_DATA from './FooterDataLeft';
 import styled from 'styled-components';
 
 const FooterLeft = ({ easterEgg }) => {
@@ -10,24 +10,24 @@ const FooterLeft = ({ easterEgg }) => {
           <input type="text" placeholder="이메일주소를 입력해주세요" />
           <button onClick={easterEgg}>구독</button>
         </div>
-        {FOOTER_DATA.map(data => (
-          <p key={data.id}>{data.top}</p>
+        {FOOTER_DATA[0].TOP.map(topLeft => (
+          <p key={topLeft.id}>{topLeft.top}</p>
         ))}
-        {FOOTER_DATA.map(item => (
-          <div className="cs-center" key={item.id}>
-            <strong>{item.footerCenter?.center[0].title}</strong>
-            <strong>{item.footerCenter?.center[1].title}</strong>
-            <strong>{item.footerCenter?.center[0].number}</strong>
-            <strong>{item.footerCenter?.center[1].number}</strong>
-            <p>{item.footerCenter?.center[0].email}</p>
-            <p>{item.footerCenter?.center[1].email}</p>
+        {FOOTER_DATA[0].MIDDLE.map(middleLeft => (
+          <div className="cs-center" key={middleLeft.id}>
+            <strong>{middleLeft.title1}</strong>
+            <strong>{middleLeft.title2}</strong>
+            <strong>{middleLeft.number1}</strong>
+            <strong>{middleLeft.number2}</strong>
+            <p>{middleLeft.email1}</p>
+            <p>{middleLeft.email2}</p>
             <div className="footer-phone">
-              <span>{item.footerCenter?.contact[0].title}</span>
-              <span>{item.footerCenter?.contact[0].time}</span>
+              <span>{middleLeft.title3}</span>
+              <span>{middleLeft.time3}</span>
             </div>
             <div className="footer-phone">
-              <span>{item.footerCenter?.contact[1].title}</span>
-              <span>{item.footerCenter?.contact[1].time}</span>
+              <span>{middleLeft.title4}</span>
+              <span>{middleLeft.time4}</span>
             </div>
           </div>
         ))}
@@ -79,7 +79,7 @@ const FooterContainer = styled.div`
         flex-direction: column;
         justify-content: space-between;
         background: #000;
-        width: 450px;
+        width: 100px;
         height: 352px;
         margin-left: 100px;
 
@@ -119,7 +119,7 @@ const FooterContainer = styled.div`
         }
 
         .cs-center {
-          width: 450px;
+          width: 100px;
           display: flex;
           justify-content: flex-start;
           align-items: flex-start;
@@ -128,7 +128,7 @@ const FooterContainer = styled.div`
           strong {
             width: 180px;
             font-size: 18px;
-            // margin-bottom: 5px;
+            margin-bottom: 5px;
             padding: 5px 5px;
           }
 

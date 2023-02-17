@@ -2,6 +2,10 @@ import React from 'react';
 import './Slider.scss';
 
 function Slider({ sliders, slideRef, count, handleSlider }) {
+  function getParametersForUnsplash({ width, height, quality, format }) {
+    return `?w=${width}&h=${height}&q=${quality}&fm=${format}&fit=crop`;
+  }
+
   return (
     <>
       <div ref={slideRef} className="main-slider-wrap">
@@ -13,7 +17,18 @@ function Slider({ sliders, slideRef, count, handleSlider }) {
             }`}
           >
             <div className="main-slicer-thumb">
-              <img src={slider.src} alt={slider.alt} />
+              <img
+                src={
+                  slider.src +
+                  getParametersForUnsplash({
+                    width: 50,
+                    height: 50,
+                    quality: 80,
+                    format: 'jpg',
+                  })
+                }
+                alt={slider.alt}
+              />
             </div>
           </div>
         ))}

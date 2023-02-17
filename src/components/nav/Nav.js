@@ -30,16 +30,16 @@ function Nav() {
   const [pointInput, setPointInput] = useState({});
   const { point } = pointInput;
 
-  useEffect(() => {
-    fetch('http://192.168.87.223:3001/user/point', {
-      headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJpYXQiOjE2NjQwMDk3ODR9.nvQGE9HLe8n-JCgqqRk3O-2dGEujzQhWIgm0WyCKN60',
-      },
-    })
-      .then(response => response.json())
-      .then(result => setPointInput(result.message));
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://192.168.87.223:3001/user/point', {
+  //     headers: {
+  //       authorization:
+  //         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJpYXQiOjE2NjQwMDk3ODR9.nvQGE9HLe8n-JCgqqRk3O-2dGEujzQhWIgm0WyCKN60',
+  //     },
+  //   })
+  //     .then(response => response.json())
+  //     .then(result => setPointInput(result.message));
+  // }, []);
 
   return (
     <div className="nav-wrap">

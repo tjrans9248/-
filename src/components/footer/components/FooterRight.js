@@ -1,5 +1,6 @@
 import React from 'react';
 import FOOTER_DATA from './FooterDataRight';
+import uuid from 'react-uuid';
 const FooterRight = () => {
   return (
     <div>
@@ -7,7 +8,7 @@ const FooterRight = () => {
         <div className="nav-notice">
           <a href="#!">공지 사항</a>
           {FOOTER_DATA[0].TOP.map(topRight => (
-            <div key={topRight.id}>
+            <div key={uuid()}>
               <p>
                 {topRight.point}
                 <span>new</span>
@@ -20,7 +21,7 @@ const FooterRight = () => {
           ))}
         </div>
         {FOOTER_DATA[0].MIDDLE.map(middleRight => (
-          <div className="nav-footer-menu" key={middleRight.id}>
+          <div className="nav-footer-menu" key={uuid()}>
             <p>{middleRight.introduction}</p>
             <p>{middleRight.privateInfo}</p>
             <p>{middleRight.faq}</p>
@@ -33,7 +34,7 @@ const FooterRight = () => {
         ))}
 
         {FOOTER_DATA[0].BOTTOM.map(bottomRight => (
-          <div key={bottomRight.id}>
+          <div key={uuid()}>
             <p>{bottomRight.address}</p>
             <p>{bottomRight.compInfo}</p>
             <p>{bottomRight.compNum}</p>

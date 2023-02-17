@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductData } from '../store/sortSlice';
-import ProductSort from './components/ProductSort';
 import ProductPagination from './components/ProductPagination';
 import ProductMenuTab from './components/ProductMenuTab';
 import ProductHead from './components/ProductHead';

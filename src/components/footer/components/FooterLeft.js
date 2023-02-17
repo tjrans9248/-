@@ -1,5 +1,6 @@
 import React from 'react';
 import FOOTER_DATA from './FooterDataLeft';
+import uuid from 'react-uuid';
 import styled from 'styled-components';
 
 const FooterLeft = ({ easterEgg }) => {
@@ -11,10 +12,12 @@ const FooterLeft = ({ easterEgg }) => {
           <button onClick={easterEgg}>구독</button>
         </div>
         {FOOTER_DATA[0].TOP.map(topLeft => (
-          <p key={topLeft.id}>{topLeft.top}</p>
+          <div key={uuid()}>
+            <p>{topLeft.top}</p>
+          </div>
         ))}
         {FOOTER_DATA[0].MIDDLE.map(middleLeft => (
-          <div className="cs-center" key={middleLeft.id}>
+          <div className="cs-center" key={uuid()}>
             <strong>{middleLeft.title1}</strong>
             <strong>{middleLeft.title2}</strong>
             <strong>{middleLeft.number1}</strong>

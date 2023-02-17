@@ -1,35 +1,40 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { increment, decrement } from '../store/counterSlice';
 
 function DetailTopInfo({ name, price, stock, category_name, image_url }) {
-  const [number, setNumber] = useState(1);
+  // const [number, setNumber] = useState(1);
+  const count = useSelector(state => state.counter.value);
+  // console.log(count);
+  const dispatch = useDispatch();
 
-  const onIncrease = () => {
-    if (number === stock) {
-      setNumber(stock);
-      alert(`최대 구매 가능 수량은 ${stock}개 입니다.`);
+  // const onIncrease = () => {
+  //   if (number === stock) {
+  //     setNumber(stock);
+  //     alert(`최대 구매 가능 수량은 ${stock}개 입니다.`);
 
-      return;
-    }
-    setNumber(number + 1);
-  };
+  //     return;
+  //   }
+  //   setNumber(number + 1);
+  // };
 
-  const onDecrease = () => {
-    if (number === 1) {
-      setNumber(1);
-      alert('해당 제품의 최소 구매 수량은 1개 입니다.');
+  // const onDecrease = () => {
+  //   if (number === 1) {
+  //     setNumber(1);
+  //     alert('해당 제품의 최소 구매 수량은 1개 입니다.');
 
-      return;
-    }
+  //     return;
+  //   }
 
-    setNumber(number - 1);
-  };
+  //   setNumber(number - 1);
+  // };
 
   const handleChange = e => {
-    setNumber(e.target.value);
+    dispatch(increment(Number(e.target.value)));
   };
 
-  const calculatePrice = number * price;
+  const calculatePrice = count * price;
 
   return (
     <>
@@ -47,16 +52,24 @@ function DetailTopInfo({ name, price, stock, category_name, image_url }) {
         <div className="prd-price-box">
           <strong className="price"> ￦ {price}</strong>
           <div className="quantity-box">
-            <button type="button" className="minus" onClick={onDecrease}>
+            <button
+              type="button"
+              className="minus"
+              onClick={() => dispatch(decrement())}
+            >
               <img src="../images/detail/minus_ico.png" alt="-" />
             </button>
             <input
               type="text"
-              value={number}
+              value={count}
               onChange={handleChange}
               className="quantity-num"
             />
-            <button type="button" className="plus" onClick={onIncrease}>
+            <button
+              type="button"
+              className="plus"
+              onClick={() => dispatch(increment())}
+            >
               <img src="../images/detail/plus_ico.png" alt="+" />
             </button>
           </div>

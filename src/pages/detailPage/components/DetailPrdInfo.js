@@ -1,5 +1,5 @@
 import React from 'react';
-import './DetailPrdInfo.scss';
+import '../DetailPrdInfo.scss';
 
 function DetailPrdInfo() {
   return (

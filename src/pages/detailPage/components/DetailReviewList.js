@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './DetailReviewList.scss';
+import '../DetailReviewList.scss';
 
 function DetailReviewList({ listContent }) {
   const [userEmail, setUserEmail] = useState('rkdfnql22@naver.com');

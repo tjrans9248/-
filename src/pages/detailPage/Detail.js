@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import DetailTab from './DetailTab';
-import DetailTopInfo from './DetailTopInfo';
+import DetailTab from '../detailPage/components/DetailTab';
+import DetailTopInfo from '../detailPage/components/DetailTopInfo';
 import './Detail.scss';
 
 function Detail() {

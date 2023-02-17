@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DetailReviewList from './DetailReviewList';
-import './DetailPrdReview.scss';
+import '../DetailPrdReview.scss';
 
 function DetailPrdReview() {
   const [modal, setModal] = useState(false);

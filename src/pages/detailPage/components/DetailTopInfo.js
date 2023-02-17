@@ -1,34 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { increment, decrement } from '../store/counterSlice';
+import { increment, decrement } from '../../store/counterSlice';
+import '../DetailPrdInfo.scss';
 
 function DetailTopInfo({ name, price, stock, category_name, image_url }) {
-  // const [number, setNumber] = useState(1);
   const count = useSelector(state => state.counter.value);
-  // console.log(count);
   const dispatch = useDispatch();
-
-  // const onIncrease = () => {
-  //   if (number === stock) {
-  //     setNumber(stock);
-  //     alert(`최대 구매 가능 수량은 ${stock}개 입니다.`);
-
-  //     return;
-  //   }
-  //   setNumber(number + 1);
-  // };
-
-  // const onDecrease = () => {
-  //   if (number === 1) {
-  //     setNumber(1);
-  //     alert('해당 제품의 최소 구매 수량은 1개 입니다.');
-
-  //     return;
-  //   }
-
-  //   setNumber(number - 1);
-  // };
 
   const handleChange = e => {
     dispatch(increment(Number(e.target.value)));

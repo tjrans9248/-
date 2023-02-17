@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import DetailPrdInfo from './DetailPrdInfo';
-import DetailPrdReview from './DetailPrdReview';
-import './DetailTab.scss';
+import DetailPrdInfo from '../components/DetailPrdInfo';
+import DetailPrdReview from '../components/DetailPrdReview';
+import '../DetailTab.scss';
 
 const TAB_CATEGORIES = [
   '제품정보',

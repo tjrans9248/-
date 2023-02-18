@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductData } from '../../store/sortSlice';
+import { RootState } from '../../store/store';
 import Dropdown from './ProductDropdown';
 import styled from 'styled-components';
+import { ProductType } from '../../../types/type';
 
 const ProductSort = () => {
   const dispatch = useDispatch();
-  const productData = useSelector(state => state.productData.value);
+  const productData: ProductType[] = useSelector(
+    (state: RootState) => state.productData.value
+  );
   const [dropdownMenu, setDropDownMenu] = useState(false);
 
   //productList, setProductList 리덕스
@@ -18,10 +22,7 @@ const ProductSort = () => {
 
   const productSortDesc = () => {
     const priceSorting = [...productData];
-    const priceCompare = key => (a, b) => {
-      return b[key] - a[key];
-    };
-    priceSorting.sort(priceCompare('price'));
+    priceSorting.sort((a, b) => b.price - a.price);
     dispatch(getProductData(priceSorting));
   };
 

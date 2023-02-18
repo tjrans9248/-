@@ -1,8 +1,16 @@
 import React from 'react';
 
-const ProductPagination = ({ searchParams, setSearchParams }) => {
-  const movePage = pageNum => {
-    searchParams.set('offset', (pageNum - 1) * 5);
+type ProductPaginationProps = {
+  searchParams: URLSearchParams;
+  setSearchParams: any;
+};
+
+const ProductPagination = ({
+  searchParams,
+  setSearchParams,
+}: ProductPaginationProps) => {
+  const movePage = (pageNum: number) => {
+    searchParams.set('offset', String((pageNum - 1) * 5));
     setSearchParams(searchParams);
   };
   return (

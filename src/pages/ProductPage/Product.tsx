@@ -2,16 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductData } from '../store/sortSlice';
+import { ProductType } from '../../types/type';
+import type { RootState } from '../store/store';
 import ProductPagination from './components/ProductPagination';
 import ProductMenuTab from './components/ProductMenuTab';
 import ProductHead from './components/ProductHead';
-import ProductList from './components/ProductItems';
+import ProductItems from './components/ProductItems';
 import './Product.scss';
 
 function Product() {
   const [currTab, setCurrTab] = useState('all');
   const [searchParams, setSearchParams] = useSearchParams();
-  const productData = useSelector(state => state.productData.value);
+  const productData: ProductType[] = useSelector(
+    (state: RootState) => state.productData.value
+  );
   const dispatch = useDispatch();
 
   const offset = searchParams.get('offset');
@@ -44,7 +48,8 @@ function Product() {
           {productData.map(product => {
             return (
               <div className="detail-product-outer-cont" key={product.id}>
-                <ProductList product={product} />
+                {/* <ProductList product={product} /> */}
+                <ProductItems product={product} />
               </div>
             );
           })}

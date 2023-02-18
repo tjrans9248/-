@@ -3,7 +3,11 @@ import ProductSort from './ProductSort';
 
 const TAB_LIST = ['all', '초콜릿', '캔디', '쿠키', '젤리', '케이크'];
 
-const ProductMenuTab = ({ setCurrTab, currTab }) => {
+type ProductMenuTabProps = {
+  setCurrTab: React.Dispatch<React.SetStateAction<string>>;
+  currTab: string;
+};
+const ProductMenuTab = ({ setCurrTab, currTab }: ProductMenuTabProps) => {
   return (
     <div>
       <div className="product-menu-tab-wrap">

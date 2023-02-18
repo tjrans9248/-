@@ -1,12 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ProductType } from '../../../types/type';
 import '../ProductList.scss';
 
-const ProductList = ({ product }) => {
+type ProductItemsProp = {
+  product: ProductType;
+};
+
+type UnsplashCdn = {
+  width: number;
+  height: number;
+  quality: number;
+  format: string;
+};
+
+const ProductItems = ({ product }: ProductItemsProp) => {
   const { id, stock, name, thumbnail_image_url, price, category_name } =
     product;
 
-  function getParameterForUnsplash({ width, height, quality, format }) {
+  function getParameterForUnsplash({
+    width,
+    height,
+    quality,
+    format,
+  }: UnsplashCdn) {
     return `?w=${width}&h=${height}&q=${quality}&fm=${format}&fit=crop}`;
   }
 
@@ -44,4 +61,4 @@ const ProductList = ({ product }) => {
   );
 };
 
-export default ProductList;
+export default ProductItems;

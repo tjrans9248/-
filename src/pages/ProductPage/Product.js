@@ -37,7 +37,7 @@ function Product() {
     <section className="product">
       <ProductHead />
       <ProductMenuTab setCurrTab={setCurrTab} currTab={currTab} />
-      {/* <ProductSort /> */}
+      {/* <ProductSort / */}
 
       <div className="detail-product-wrap">
         <div className="detail-product-middle-box">

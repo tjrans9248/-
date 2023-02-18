@@ -1,4 +1,5 @@
 import React from 'react';
+import { lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './components/nav/Nav';
 import Footer from './components/footer/Footer';
@@ -14,7 +15,7 @@ import Store from './pages/sub/Store';
 import Like from './pages/Like/Like';
 import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
-
+// const Product = lazy(() => import('./pages/ProductPage/Product'));
 const Router = () => {
   return (
     <BrowserRouter>

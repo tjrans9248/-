@@ -4,12 +4,18 @@ import NavModal from './NavModal';
 import './Nav.scss';
 const loginImg = ['/images/Nav/loginClick.png', '/images/Nav/login.png'];
 
+interface Point {
+  [key: string]: number;
+}
+
 function Nav() {
   const location = useLocation();
 
   const [isSearch, setIsSearch] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
   const [isMenuImg, setIsMenuImg] = useState(false);
+  const [pointInput, setPointInput] = useState({});
+  const { point }: Point = pointInput;
 
   useEffect(() => {
     setIsMenu(false);
@@ -26,20 +32,6 @@ function Nav() {
   const menuModalToggle = () => {
     setIsMenu(prev => !prev);
   };
-
-  const [pointInput, setPointInput] = useState({});
-  const { point } = pointInput;
-
-  // useEffect(() => {
-  //   fetch('http://192.168.87.223:3001/user/point', {
-  //     headers: {
-  //       authorization:
-  //         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJpYXQiOjE2NjQwMDk3ODR9.nvQGE9HLe8n-JCgqqRk3O-2dGEujzQhWIgm0WyCKN60',
-  //     },
-  //   })
-  //     .then(response => response.json())
-  //     .then(result => setPointInput(result.message));
-  // }, []);
 
   return (
     <div className="nav-wrap">

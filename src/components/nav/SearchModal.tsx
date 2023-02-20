@@ -1,10 +1,15 @@
 import React from 'react';
 
-function SearchModal({ searchList }) {
+interface SearchItem {
+  id: number;
+  name: string;
+}
+
+function SearchModal({ searchList }: any) {
   return (
     <div className="search-list">
       {searchList ? (
-        searchList.map(item => {
+        searchList.map((item: SearchItem) => {
           return <p key={item.id}>{item.name}</p>;
         })
       ) : (

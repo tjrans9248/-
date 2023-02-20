@@ -3,13 +3,13 @@ import FOOTER_DATA from './FooterDataLeft';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
 
-const FooterLeft = ({ easterEgg }) => {
+const FooterLeft = () => {
   return (
     <FooterContainer>
       <div className="footer-left">
         <div className="footer-input">
           <input type="text" placeholder="이메일주소를 입력해주세요" />
-          <button onClick={easterEgg}>구독</button>
+          <button>구독</button>
         </div>
         {FOOTER_DATA[0].TOP.map(topLeft => (
           <div key={uuid()}>

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import SearchModal from './SearchModal';
 import './NavModal.scss';
 
-function NavModal({ closeModal }) {
+function NavModal({ closeModal }: any) {
   const [inputValue, setInputValue] = useState('');
-  const [searchList, setSearchList] = useState([]);
+  const [searchList, setSearchList] = useState<any>([]);
   const [isSearchModal, setIsSearchModal] = useState(false);
 
-  const searchInput = e => {
+  const searchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
     setIsSearchModal(true);
   };

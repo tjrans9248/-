@@ -58,7 +58,7 @@ function DetailTopInfo({
             <input
               type="text"
               value={count}
-              onChange={handleChange}
+              // onChange={handleChange}
               className="quantity-num"
             />
             <button

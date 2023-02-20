@@ -2,25 +2,37 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-const ERROR_MSG = {
+type UserInfo = {
+  email: string;
+  password: string;
+};
+
+type Error = {
+  data: any;
+  WRONG_EMAIL: any;
+  WRONG_PASSWORD: any;
+};
+
+const ERROR_MSG: Error = {
   WRONG_EMAIL: '이메일을 다시 작성해주세요.',
   WRONG_PASSWORD: '비밀번호를 다시 작성해주세요.',
+  data: undefined,
 };
 
 function Login() {
   const navigate = useNavigate();
-  const [inputValue, setInputValue] = useState({
+  const [inputValue, setInputValue] = useState<UserInfo>({
     email: '',
     password: '',
   });
 
-  const handleChange = e => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
   const { email, password } = inputValue;
 
-  const handleSubmit = e => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     fetch('http://10.58.2.130:3001/users/signin', {
       method: 'POST',
@@ -41,9 +53,8 @@ function Login() {
           return;
         }
 
-        if (ERROR_MSG[data.message]) {
-          alert(ERROR_MSG[data.message]);
-          return;
+        if (ERROR_MSG.data.message) {
+          alert(ERROR_MSG.data.message);
         }
 
         alert('로그인 실패!');
@@ -53,13 +64,19 @@ function Login() {
   return (
     <LoginContainer>
       <h1 className="login-title">로그인</h1>
-      <form
-        className="login-form"
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-      >
-        <input className="login-input" name="email" placeholder="이메일" />
-        <input className="login-input" name="password" placeholder="비밀번호" />
+      <form className="login-form" onSubmit={handleSubmit}>
+        <input
+          onChange={handleChange}
+          className="login-input"
+          name="email"
+          placeholder="이메일"
+        />
+        <input
+          onChange={handleChange}
+          className="login-input"
+          name="password"
+          placeholder="비밀번호"
+        />
         <input
           type="checkbox"
           id="saveEmail"

@@ -2,10 +2,17 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignUp.scss';
 
+interface UserInfo {
+  email: string;
+  password: string;
+  name: string;
+  address: string;
+}
+
 function Join() {
   const navigate = useNavigate();
 
-  const [inputValue, setInputValue] = useState({
+  const [inputValue, setInputValue] = useState<UserInfo>({
     email: '',
     password: '',
     name: '',
@@ -13,15 +20,15 @@ function Join() {
   });
   const [isCheckEmail, setIsCheckEmail] = useState(false);
 
-  const handleChange = e => {
-    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue({ ...inputValue, [e.target.value]: e.target.value });
   };
 
   const { email, password, name, address } = inputValue;
 
   const isPwValid = PW_VALIDATION.test(password);
 
-  const checkIdDuplicate = e => {
+  const checkIdDuplicate = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     fetch('http://192.168.228.223:3001/user/check', {
@@ -45,7 +52,7 @@ function Join() {
       });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!isCheckEmail) {
@@ -92,12 +99,16 @@ function Join() {
             하는 항목입니다.
           </p>
         </div>
-        <form onChange={handleChange} onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="join-form">
             <label className="form-label">
               <span className="caution-symbol">*</span>이메일
             </label>
-            <input className="form-input-email input-focus" name="email" />
+            <input
+              onChange={handleChange}
+              className="form-input-email input-focus"
+              name="email"
+            />
             <button className="duplicate-btn" onClick={checkIdDuplicate}>
               중복확인
             </button>

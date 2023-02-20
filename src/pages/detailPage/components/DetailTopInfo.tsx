@@ -2,14 +2,32 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement } from '../../store/counterSlice';
+import { RootState } from '../../store/store';
 import '../DetailPrdInfo.scss';
 
-function DetailTopInfo({ name, price, stock, category_name, image_url }) {
-  const count = useSelector(state => state.counter.value);
+interface DetailTopInfoType {
+  name: string;
+  price: number;
+  stock: number;
+  category_name: string;
+  image_url: string;
+}
+
+function DetailTopInfo({
+  name,
+  price,
+  stock,
+  category_name,
+  image_url,
+}: DetailTopInfoType) {
+  const count = useSelector((state: RootState) => state.counter.value);
   const dispatch = useDispatch();
 
-  const handleChange = e => {
-    dispatch(increment(Number(e.target.value)));
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    Number: any
+  ): void => {
+    dispatch(increment(Number(e.target.valueAsNumber)));
   };
 
   const calculatePrice = count * price;

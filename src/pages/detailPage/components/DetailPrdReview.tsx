@@ -5,21 +5,15 @@ import '../DetailPrdReview.scss';
 function DetailPrdReview() {
   const [modal, setModal] = useState(false);
   const [textArea, setTextArea] = useState('');
-  const [listContent, setListContent] = useState([]);
+  const [listContent, setListContent] = useState<string[]>([]);
 
   const handleModal = () => {
     setModal(!modal);
   };
 
-  const onChange = e => {
-    setTextArea(e.target.value);
-  };
-
-  const handleSubmit = e => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const copy = [...listContent];
-    copy.push(textArea);
-    setListContent(copy);
+    setListContent(prev => [...prev, textArea]);
 
     setTextArea('');
     setModal(!modal);
@@ -44,7 +38,6 @@ function DetailPrdReview() {
                   id="content"
                   name="content"
                   value={textArea}
-                  onChange={onChange}
                   placeholder="후기 내용을 작성해주세요.
 특수문자(<, >, |, = , &lt, &gt 등) 입력은 불가능합니다."
                   required
